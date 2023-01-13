@@ -1,0 +1,142 @@
+.NavBar{
+    width: 80%; 
+    margin: 3rem auto ;
+    position: relative;
+}
+
+.NavMainBox{
+    display: grid;
+    grid-template-columns: 1fr 1.7fr;
+    align-items: center;
+    gap: 2rem;
+}
+
+.NavBox_right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.RightNavbarMenu{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 2px solid transparent;
+    transition: all .3s ease-in-out;
+}
+
+.active_btn{
+    color: blue;
+    border-bottom: 2px solid red;
+    padding-bottom: .2rem ;
+}
+
+.RightNavbarMenuItems{
+    
+}
+
+.RightNavbarMenuItemsLink{
+
+}
+.MobileMenu{
+    display: none;
+}
+
+.MobileMenuItems{
+    display: none;
+}
+
+.MobileMenuItemsLink{
+    display: none;
+}
+
+.MobileMenuBtn{
+    display:none ;
+}
+
+.NavbarConnectBtn{
+    background-color: rgba(0, 0,0, 0.1);
+    padding: 0.8rem;
+    border: none ;
+    border-radius: .5rem;
+    font-size: 1.1rem;
+    color: darkorchid;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items:center ;
+    gap: 0.4rem;
+}
+
+.NavBarBoxRightOpen{
+    display:none ;
+}
+.ModelBoxx{
+    position: fixed;
+    inset: 0 0 0 0;
+    background: rgb(94, 155, 193);
+    z-index: 777777777;
+}
+
+@media only screen and (max-width: 35em) {
+    .NavBar{
+        width: 90%;
+        margin: 2rem auto;
+    }
+    .NavMainBox{
+        grid-template-columns: 0.6fr 2fr;
+        justify-content: space-between;
+    }
+    .NavBox_left{
+        
+    }
+    .NavbarConnectBtn{
+        font-size: 1rem;
+        padding: 00.8rem;
+    }
+    .NavBarBoxRightOpen{
+        display:block;
+    }
+    .RightNavbarMenu{
+        position: fixed;
+        z-index: 111111;
+        background-color: rgb(195, 216, 255);
+        width: 100%;
+        flex-direction: column;
+        height: 100vh;
+        inset: 0 0 0 0;
+        padding: 4rem;
+        display: none;
+    }
+
+    .MobileMenu{
+        display:block ;
+        position: fixed;
+        z-index: 11111111;
+        background-color: #e6ffff;
+        inset: 0 0 0 0;
+        text-align: center;
+        padding-top: 4rem ;
+    }
+
+    .MobileMenuItems{
+        display:block;
+        margin-top:  0.7rem;
+    }
+
+    .MobileMenuItemsLink{
+        display: block;
+    }
+    .MobileMenuBtn{
+        display: block;
+        padding-top: 2rem;
+    }
+    .active_btn{
+        border-bottom: 1px solid slateblue ;
+        padding: 0.1rem;
+    }
+    .ModelBoxx{
+        inset: 0 0 -70% 0%;
+    }
+    
+}

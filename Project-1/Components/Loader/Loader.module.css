@@ -1,0 +1,19 @@
+.Main{
+    padding-top: 8rem;
+    align-items: center;
+    text-align: center;
+    color: coral;
+    font-size: 2rem;
+}
+
+.PulseDots{
+    padding: 2rem;
+}
+
+.spinner {
+    margin: auto;
+    animation: spinner 1s linear infinite;
+  }
+  @keyframes spinner {
+    100% { transform: rotate(360deg) }
+  }

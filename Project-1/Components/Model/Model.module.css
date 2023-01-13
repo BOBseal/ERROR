@@ -1,0 +1,108 @@
+.Model{
+    width: 50%;
+    margin: 1rem auto;
+    align-items: center;
+}
+.Model_box{
+    width: 100%;
+    align-items: center;
+}
+.Model_box_left{
+    
+}
+.Model_box_right{
+   text-align: center;
+}
+.Model_box_right h1{
+   font-size: 3rem;
+   color: darkblue;
+   line-height:0.9;
+}
+.Model_box_right h1 span{
+    display: block;
+    font-size: 5rem;
+    color: rgb(185, 124, 11);
+    line-height:0.9;
+ }
+ .Model_box_right small{
+     font-size:1.2rem ;
+     color: rgb(140, 57, 163);
+ }
+.Model_box_right_name{
+
+}
+.Model_box_right_name_info{
+    display: flex;
+    align-items: center;
+    margin-block: 1rem;
+    gap: 1rem;
+    background-color: rgb(223, 212, 212);
+    padding:1rem ;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.Model_box_right_name_info input{
+    width:100% ;
+    background-color: transparent ;
+    outline: none;
+    border: none;
+    color: rgb(13, 101, 101);
+}
+.Model_box_right_name_btn{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+}
+.Model_box_right_name_btn button{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: rgb(141, 72, 29);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: rgba(21, 70, 70, 0.167);
+    padding: 1rem;
+    border-radius: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    gap: 1rem;
+}
+
+@media only screen and (max-width:35em) {
+    .Model{
+        width: 100%;
+    }
+    .Model_box{
+        grid-template-columns: 1fr;
+    }
+    .Model_box_left{
+      
+    }
+    .Model_box_right{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    .Model_box_right h1{
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    .Model_box_right h1 span{
+        font-size: 3rem;
+    }
+    .Model_box_right_name{
+    
+    }
+    .Model_box_right_name_info{
+    
+    }
+    .Model_box_right_name_btn{
+        display:grid ;
+        grid-template-columns: 1fr;
+        z-index: 111111111111;
+    }
+   
+    
+}
