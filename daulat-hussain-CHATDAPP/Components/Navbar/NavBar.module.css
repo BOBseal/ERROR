@@ -77,6 +77,15 @@
     background: rgb(94, 155, 193);
     z-index: 777777777;
 }
+.aa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color:darkviolet ;
+}
 
 @media only screen and (max-width: 35em) {
     .NavBar{

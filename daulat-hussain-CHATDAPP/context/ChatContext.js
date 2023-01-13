@@ -28,7 +28,7 @@ export const ChatAppProvider = ({children}) =>{
             const contract = await connectingWithContract();
             const connectAccount = await connectWallet();
             setAccount(connectAccount);
-           const userName =await contract.getUsername(connectAccount); //calling contract data
+            const userName =await contract.getUsername(connectAccount); 
             setUserName(userName);
             const friendLists= await contract.getMyFriendList();
             setFriendLists(friendLists);
@@ -55,7 +55,7 @@ export const ChatAppProvider = ({children}) =>{
 
     const createAccount = async ({name }) =>{
         try {
-           // if (name ) return setError("Name and Address Cannot be Empty")
+            if (!name) return setError("Name Cannot be Empty")
             const contract = await connectingWithContract(); 
             const getCreatedUser = await contract.createAccount(name);
             setLoading(true);
@@ -105,7 +105,7 @@ export const ChatAppProvider = ({children}) =>{
     } 
 
     return(
-        <ChatContext.Provider value={{readMessage , createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,
+        <ChatContext.Provider value={{readMessage , createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,setUserName,
             account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet,
         }}>
             {children}

@@ -49,8 +49,7 @@ const NavBar = () => {
           <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
           width="69px" height="69px" viewBox="0 0 256.000000 256.000000"
           preserveAspectRatio="xMidYMid meet">
-
-          <g transform="translate(0.000000,256.000000) scale(0.100000,-0.100000)"
+          <g transform="translate(0.000000,257.000000) scale(0.100000,-0.100000)"
           fill="#000000" stroke="none">
           <path d="M1190 2331 c0 -5 -17 -11 -37 -14 -168 -25 -212 -38 -346 -102 -90
           -43 -182 -110 -267 -195 -69 -69 -160 -186 -160 -206 0 -7 -4 -14 -8 -16 -26
@@ -204,7 +203,7 @@ const NavBar = () => {
                         <span>Connect Wallet</span>
                       </button>
                     ):(
-                      <button onClick={()=> setOpenModel(true)}> 
+                      <button className={Style.aa} onClick={()=> setOpenModel(true)}> 
                         {""} 
                            {userName ? <>
                             <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -213,7 +212,7 @@ const NavBar = () => {
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M17 22C19.7614 22 22 19.7614 22 17C22 14.2386 19.7614 12 17 12C14.2386 12 12 14.2386 12 17C12 19.7614 14.2386 22 17 22ZM17.0303 19.0303L19.5303 16.5303C19.8232 16.2374 19.8232 15.7626 19.5303 15.4697C19.2374 15.1768 18.7626 15.1768 18.4697 15.4697L16.5 17.4393L16.0303 16.9697C15.7374 16.6768 15.2626 16.6768 14.9697 16.9697C14.6768 17.2626 14.6768 17.7374 14.9697 18.0303L15.9692 19.0298C16.2621 19.3227 16.7374 19.3232 17.0303 19.0303Z" fill="#4296FF"/>
                             </svg>
                            </> :<>
-                            <svg fill="#000000" width="30px" height="10px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                            <svg fill="#000000" width="30px" height="25px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM16 6c-5.522 0-10 4.477-10 10 0 5.522 4.478 10 10 10 5.523 0 10-4.478 10-10 0-5.523-4.477-10-10-10zM19.988 17h-3v3c0 0.553-0.448 1-1 1-0.553 0-1-0.447-1-1v-3h-3c-0.553 0-1-0.448-1-1s0.447-1 1-1h3v-3c0-0.553 0.447-1 1-1 0.552 0 1 0.447 1 1v3h3c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
                             </svg>
                            </> }
@@ -243,14 +242,15 @@ const NavBar = () => {
          title = "Welcome to"
          head = "BOB Chat"
          info='A Decentralized Chat Protocol with Censorship Resistance Built for EVM Blockchains. Serves the Best Use Case for Publishing and Storing Chats/Texts Directly onto reputed DLTs'
-         smallInfo= "REGISTER ACCOUNT"
+         smallInfo= "INSCRIBE PERSONA"
          functionName= {createAccount}
          address = {account}
          />
+        
          </div> 
       )}
 
-      {error == ""? "" : <Error error = {error}/>} 
+      { /*error == ""? "" : <Error error = {error}/> */} 
     </div>
   )
 }

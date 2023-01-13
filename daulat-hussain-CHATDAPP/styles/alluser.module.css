@@ -1,0 +1,36 @@
+.Main{
+    
+}
+.alluserinfo{
+    width: 80%;
+    margin: 4rem auto;
+    
+}
+.alluserinfo  h1{
+    align-items: center;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.alluser{
+    width: 80%;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+@media only screen and (max-width: 35em) {
+    .alluser{
+        width: 90%;
+        grid-template-columns: 1fr ;
+    }
+    .alluserinfo{
+        width: 100%;
+        margin: 2rem auto;
+    }
+    .alluserinfo h1{
+        width: 100%;
+        font-size: 2rem;
+    }
+}

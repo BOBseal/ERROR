@@ -1,0 +1,81 @@
+.Filter{
+    width: 100%;
+    margin: 1rem auto;
+}
+.Filter_box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Filter_boxLeft_search{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 2rem;
+    padding-inline: 1rem;
+    background-color: rgb(156, 194, 252);
+    color:rgb(197, 237, 157);
+    height: 2.4rem;
+    cursor: pointer;
+}
+.Filter_boxLeft_search input{
+    background-color: rgba(0, 0, 0, 0.14);
+    height: 1.6rem;
+    border-radius: 4rem;
+    border-color:aqua;
+    color: blanchedalmond;
+}
+.Filter_boxRight button{
+    border-radius: 1rem;
+    border-color: red;
+    background-color: rgba(0, 255, 255, 0.174);
+    height: 2.7rem;
+    color:rgb(172, 2, 2) ;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.Filter_boxRight{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem
+}
+.svg{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+.Filter_Model{
+    position:fixed;
+    inset: 0 0 0 0 ;
+    z-index: 22222222222;
+}
+@media only screen and (max-width:35em){
+    .Filter{
+        width: 90%;
+    }
+    .Filter_box{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .Filter_boxLeft_search{
+       
+    }
+    .Filter_boxLeft{
+    
+    }
+    .Filter_boxRight button{
+        border-radius: 1rem;
+        border-color: red;
+        background-color: rgba(0, 255, 255, 0.174);
+        height: 2.3rem;
+        color:rgb(172, 2, 2) ;
+        font-size: 0.7rem;
+        font-weight: 900;
+        cursor: pointer;
+    }
+    .Filter_boxRight{
+        gap: 0.5rem;
+        width: 50%;
+    }
+}
