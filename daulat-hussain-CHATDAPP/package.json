@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@next/font": "13.1.1",
+    "@thirdweb-dev/react": "^3.6.9",
+    "@thirdweb-dev/sdk": "^3.6.9",
     "ethers": "^5.7.2",
     "next": "13.1.1",
     "react": "18.2.0",
@@ -18,7 +20,7 @@
     "web3modal": "^1.9.11"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^1.0.2",
     "hardhat": "^2.12.5"
   }
 }

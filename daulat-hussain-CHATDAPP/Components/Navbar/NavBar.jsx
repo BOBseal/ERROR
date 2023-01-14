@@ -217,7 +217,7 @@ const NavBar = () => {
                             </svg>
                            </> }
                            {""}
-                           <small> {userName || "Create Account"}</small>
+                           <small> {userName  || "Create Account "}</small>
                       </button>
                     )}
                   </div>
@@ -250,7 +250,7 @@ const NavBar = () => {
          </div> 
       )}
 
-      { /*error == ""? "" : <Error error = {error}/> */} 
+      { error == ""? "" : <Error error = {error}/> } 
     </div>
   )
 }

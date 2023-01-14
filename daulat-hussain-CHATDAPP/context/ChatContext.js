@@ -28,7 +28,7 @@ export const ChatAppProvider = ({children}) =>{
             const contract = await connectingWithContract();
             const connectAccount = await connectWallet();
             setAccount(connectAccount);
-            const userName =await contract.getUsername(connectAccount); 
+           const userName =await contract.getUsername(connectAccount); 
             setUserName(userName);
             const friendLists= await contract.getMyFriendList();
             setFriendLists(friendLists);
@@ -58,6 +58,8 @@ export const ChatAppProvider = ({children}) =>{
             if (!name) return setError("Name Cannot be Empty")
             const contract = await connectingWithContract(); 
             const getCreatedUser = await contract.createAccount(name);
+            //const userName =await contract.getUsername(connectAccount); 
+            //setUserName(userName);
             setLoading(true);
             await getCreatedUser.wait();
             setLoading(false);
@@ -67,9 +69,9 @@ export const ChatAppProvider = ({children}) =>{
         }
     }
 
-    const addFriend = async({name , accountAddress})=>{
+    const addFriend = async({accountAddress , name})=>{
         try {
-            if(name || accountAddress) return setError("Incorrect Data Provided!")
+            if(accountAddress || name) return setError("Incorrect Data Provided!")
             const contract = await connectingWithContract();
             const addFrend = await contract.addFriend(accountAddress,name);
             setLoading(true);
