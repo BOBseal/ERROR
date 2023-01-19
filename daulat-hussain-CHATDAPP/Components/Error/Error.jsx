@@ -10,7 +10,7 @@ const Error = ({error}) => {
            {" OOPS SOMETHING WENT WRONG!"}
           </h1>
           <h2> 
-           {"Fix Error and Try Again..."} 
+           {"Reload Browser and Retry"} 
           </h2>
          <> Your Error : {error} </>
       </div>

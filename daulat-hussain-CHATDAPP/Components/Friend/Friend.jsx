@@ -13,15 +13,17 @@ const Friend = () => {
   return (
     <div className={S.Friend}>
       <div className={S.Friend_box}>
-        
           <div className={S.Friend_boxLeft}>
+            <h2>Your Friend List</h2>
+            <div className={S.dd}>
               {friendLists.map( (el , i) => 
               <Card key={i + 1} el={el} i={i} readMessage={readMessage} readUser={readUser} />
               ) }
+              </div>
           </div>
           <div className={S.Friend_boxRight}>
                 <Chat functionName={sendMessage} readMessage={readMessage} friendMsg={friendMsg} account={account} userName={userName} 
-                loading={loading} currentUserName={currentUserName} currentUserAddress={currentUserAddress} /> rr
+                loading={loading} currentUserName={currentUserName} currentUserAddress={currentUserAddress} /> 
           </div>
 
       </div>

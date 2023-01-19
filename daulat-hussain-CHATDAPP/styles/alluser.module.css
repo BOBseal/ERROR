@@ -4,13 +4,19 @@
 .alluserinfo{
     width: 80%;
     margin: 4rem auto;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
     
 }
 .alluserinfo  h1{
-    align-items: center;
-    text-align: center;
     font-size: 3rem;
 }
+.alluserinfo  small{
+    color: rgb(241, 100, 100);
+}
+
 
 .alluser{
     width: 80%;

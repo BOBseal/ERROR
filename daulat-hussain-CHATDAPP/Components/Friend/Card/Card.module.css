@@ -1,0 +1,52 @@
+.men{
+    background-color: rgba(0, 0, 0, 0.22);
+    align-items: center;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.ft{
+    display: flex;
+    justify-content: center;
+}
+.no{
+    color:darkblue ;
+}
+.ss{
+    color: red;
+}
+.Card{
+ padding-bottom: 1rem;
+ cursor: pointer;
+}
+.Card_boxLeft{
+    display: flex;
+    border-radius: 4rem;
+    background-color: rgba(0, 0, 0, 0.037);
+    justify-content: center;
+}
+.Card_boxRight{
+    padding-left: 2rem;
+    display: flex;
+    gap: 3rem;
+}
+.Card_boxRight_middle{
+    margin-top: -1.2rem;
+}
+.Card_boxRight_middle h4{
+    display: flex;
+    padding-left: 1rem;
+}
+.Card_boxRight_end small{
+    display: flex;
+    justify-content: center;
+    padding: 0.3rem;
+    border-radius: 3rem;
+    color: rgb(64, 101, 103);
+}
+
+@media only screen and(max-width: 35em) {
+    .men{
+       
+    }
+}

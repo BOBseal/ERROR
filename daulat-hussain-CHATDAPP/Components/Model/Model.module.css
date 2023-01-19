@@ -101,7 +101,7 @@
     .Model_box_right_name_btn{
         display:grid ;
         grid-template-columns: 1fr;
-        z-index: 111111111111;
+        z-index: 111111111111111;
     }
    
     

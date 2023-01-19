@@ -35,7 +35,7 @@ export const ChatAppProvider = ({children}) =>{
             const userList = await contract.getAllAppUsers();
             setUserLists(userList);
         } catch (error) {
-            setError("Please Set-Up wallet before Continuing");
+            setError("You Need to Create Account First");
         }
     };
 
@@ -65,13 +65,13 @@ export const ChatAppProvider = ({children}) =>{
             setLoading(false);
             window.location.reload();
         } catch (error) {
-            setError("Error Encountered While Creating Account. Please Reload and Try Again and Make sure to Have a little Gas Fee on your Wallet for the Registration Process!");
+            setError("Error Encountered Please Reload Browser and Retry!");
         }
     }
 
-    const addFriend = async({accountAddress , name})=>{
+    const addFriend = async({ accountAddress , name})=>{
         try {
-            if(accountAddress || name) return setError("Incorrect Data Provided!")
+            if( !name||!accountAddress ) return setError("Incorrect Data Provided!")
             const contract = await connectingWithContract();
             const addFrend = await contract.addFriend(accountAddress,name);
             setLoading(true);

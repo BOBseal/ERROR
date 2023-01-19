@@ -4,21 +4,22 @@ import S from '../styles/alluser.module.css'
 import { ChatContext } from '../context/ChatContext'
 
 const allUser = () => {
-    const {userLists , addFreind} = useContext(ChatContext);
+    const {userLists , addFriend } = useContext(ChatContext);
   return (
     <div className={S.Main}>
         <div>
 
                 <div className={S.alluserinfo}>
                     <h1>
-                        FIND {"&"} ADD YOUR FRIENDS
+                        ALL USER LIST
                     </h1>
-                    
+                    <small>Forgot Your Friend's ID?You Can Take a Look Manually from the List.</small>
+                    <small>You Cannot Add Friends from this Menu Kindly Go back to Home Menu!!!</small>
                 </div>
 
                 <div className={S.alluser}>
                     {userLists.map((el,i) =>(
-                        <USERCARD key={i+1} el={el} i={i} addFreind={addFreind}/>
+                        <USERCARD key={i+1} el={el} i={i} addFriend={()=>addFriend( )}/>
                     ) )}
                     
                 </div>

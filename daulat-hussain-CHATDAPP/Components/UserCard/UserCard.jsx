@@ -1,9 +1,9 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import S from './UserCard.module.css'
 
 
 const USERCARD = ( {el , i , addFriend }) => {
-  //console.log(el);
+  
   return (
     <div className={S.UserCard}>
       <div className={S.UserCard_box}>
@@ -18,11 +18,11 @@ const USERCARD = ( {el , i , addFriend }) => {
                 {el.name} 
               </h3>
 
-              <p> {el.accountAddress.slice(0,25)}.. </p>
+              <p className={S.fd}> {el.accountAddress.slice(2)} </p>
 
-              <button className={S.UserCard_boxInfoBtn} onClick={()=>addFriend( {name:el.name , accountAddress:el.accountAddress }) }>
+              {/*<button className={S.UserCard_boxInfoBtn} onClick={()=>addFriend( {name:el.name ,accoundAddress: el.accountAddress } ) }>
                 ADD FRIEND
-              </button>
+  </button>*/}
 
           </div>
       </div>

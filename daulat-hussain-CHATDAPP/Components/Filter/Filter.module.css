@@ -25,6 +25,9 @@
     border-color:aqua;
     color: blanchedalmond;
 }
+.Filter_boxLeft{
+    padding-left: 6rem;
+}
 .Filter_boxRight button{
     border-radius: 1rem;
     border-color: red;
@@ -77,5 +80,8 @@
     .Filter_boxRight{
         gap: 0.5rem;
         width: 50%;
+    }
+    .Filter_boxLeft{
+        padding-left: 0;
     }
 }
