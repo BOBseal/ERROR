@@ -58,6 +58,19 @@ const Chat = ({functionName, readMessage, friendMsg, account, userName,
                     ))}
                 </div>
             </div>
+
+            {currentUserName && currentUserAddress ? (
+            <>
+                <div className={S.ChatBoxSnd}>
+                    <div className={S.ChatBoxSndImg}>
+                        <>smile img</>
+                        <input type='text' placeholder='Type Message Here' onChange={(e)=>setmessage(e.target.value)}/>
+                        <>img.file</>
+                        {loading == true?(<Loader/>):(<div onClick={()=> functionName({ address:chatData.address,msg: message})}>Send Icon</div>)}
+                    </div>
+                </div>
+            </>
+            ):("") }
         </div>
     </div>
     )

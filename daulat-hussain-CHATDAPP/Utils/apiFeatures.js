@@ -14,6 +14,7 @@ export const CheckIfWalletConnected = async()=> {
     } catch (error) {
         console.log(error);
     }
+  //  window.location.reload()
 };
 
 export const connectWallet = async()=> {
@@ -23,8 +24,8 @@ export const connectWallet = async()=> {
             method: "eth_requestAccounts",
         });
         const firstAccount = accounts[0];
-        return firstAccount;
-        
+       // window.location.reload()
+       return firstAccount;
     } catch (error) {
         console.log(error);
     }

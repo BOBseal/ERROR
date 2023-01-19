@@ -8,7 +8,7 @@ const Friend = () => {
   //const array = [1,2,3,4,5,5,,6,6,6,6,];
   const {readMessage , createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,setUserName,
     account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet} = useContext(ChatContext);
-
+    const [open , setOpen] = useState(false);
 
   return (
     <div className={S.Friend}>
@@ -22,8 +22,8 @@ const Friend = () => {
               </div>
           </div>
           <div className={S.Friend_boxRight}>
-                <Chat functionName={sendMessage} readMessage={readMessage} friendMsg={friendMsg} account={account} userName={userName} 
-                loading={loading} currentUserName={currentUserName} currentUserAddress={currentUserAddress} /> 
+               <Chat functionName={sendMessage} readMessage={readMessage} friendMsg={friendMsg} account={account} userName={userName} 
+                loading={loading} currentUserName={currentUserName} currentUserAddress={currentUserAddress} />
           </div>
 
       </div>

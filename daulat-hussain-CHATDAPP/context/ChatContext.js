@@ -84,9 +84,9 @@ export const ChatAppProvider = ({children}) =>{
         }
     }
 
-    const sendMessage = async({msg , address })=> {
+    const sendMessage = async({address , msg })=> {
         try {
-            if(msg || address) return setError("Message Cannot be Empty, Type Atleast one Character")
+            if(!address || !msg) return setError("Message Cannot be Empty, Type Atleast one Character")
             const contract = await connectingWithContract();
             const msgCont = await contract.sendMessage(address , msg);
             setLoading(true);

@@ -8,7 +8,7 @@ const Card = ({readMessage , el , i , readUser}) => {
     <div className={S.men}>
         <h2 className={S.ft}> <div className={S.no} >No. </div> : <div className={S.ss}>{i+1} </div></h2>
         <Link href={{pathname: '/' , query:`${el.name}` , address: `${el.pubKey}` }} >
-            <div className={S.Card} onClick={()=> readMessage(el.pubKey) , readUser(el.pubKey)}>
+            <div className={S.Card} onClick={()=> (readMessage(el.pubKey) , readUser(el.pubKey))}>
                 <div className={S.Card_box}>
                     <div className={S.Card_boxLeft}>
                     <svg width="60px" height="60px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
