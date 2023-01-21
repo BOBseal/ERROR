@@ -6,7 +6,7 @@ import { Loader } from '../../index';
 
 
 const Chat = ({functionName, readMessage, friendMsg, account, userName, 
-    loading,currentUserName,currentUserAddress}) => {
+    loading,currentUserName,currentUserAddress ,transferEth}) => {
   const [message, setmessage] = useState('');
   const [chatData, setchatData] = useState({name: "" , address: ""});
   const router = useRouter();

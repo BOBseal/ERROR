@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { ChatAppProvider } from '../context/ChatContext';
 import {NavBar} from '../Components/index'
 import { ThirdwebProvider, ChainId } from '@thirdweb-dev/react';
+//import { useNetwork } from '@thirdweb-dev/react';
 
 
 

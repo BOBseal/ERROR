@@ -1,9 +1,10 @@
 import React, {useState , useEffect  } from 'react';
 import { useRouter } from 'next/router';
-
+import Web3Modal from "web3modal";
 import { CheckIfWalletConnected } from '../Utils/apiFeatures';
 import { connectWallet } from '../Utils/apiFeatures';
 import { connectingWithContract } from '../Utils/apiFeatures';
+import { ethers } from 'ethers';
 //import { convertTime } from '../Utils/apiFeatures';
 
 
@@ -21,19 +22,23 @@ export const ChatAppProvider = ({children}) =>{
     const [currentUserName, setCurrentUserName] = useState("");
     const [currentUserAddress , setCurrentUserAddress] = useState("");
     const router = useRouter();
-
+    const [transactionCount, settransactionCount] = useState("");
+    const [transactions, setTransactions] = useState([]);
+    const ChainID = 137;
 
     const fetchData =async() =>{
         try {
             const contract = await connectingWithContract();
             const connectAccount = await connectWallet();
             setAccount(connectAccount);
+            //window.location.reload();
            const userName =await contract.getUsername(connectAccount); 
             setUserName(userName);
             const friendLists= await contract.getMyFriendList();
             setFriendLists(friendLists);
             const userList = await contract.getAllAppUsers();
             setUserLists(userList);
+            
         } catch (error) {
             setError("You Need to Create Account First");
         }
@@ -106,8 +111,29 @@ export const ChatAppProvider = ({children}) =>{
 
     } 
 
+    const sendMatic = async(address, ether , message , keyword)=>{
+        try {
+            if (account){
+            const contract = await connectingWithContract();
+            const unFormatedPrice = ethers.utils.parseEther(ether);
+            await ethereum.request({
+                method: 'eth_sendTransaction',
+                params: [
+                   { from : account,
+                    to: address,
+                    gas: "0x5208",
+                    value: unFormatedPrice._hex}
+                ]
+            })
+        }
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return(
-        <ChatContext.Provider value={{readMessage , createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,setUserName,
+        <ChatContext.Provider value={{readMessage ,sendMatic, createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,setUserName,
             account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet,
         }}>
             {children}

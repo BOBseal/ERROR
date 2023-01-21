@@ -1,7 +1,8 @@
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
-
 import {ChatAppAddress , ChatAppAbi} from '../context/constants';
+
+const ChainID = 137;
 
 export const CheckIfWalletConnected = async()=> {
     try {
@@ -29,6 +30,7 @@ export const connectWallet = async()=> {
     } catch (error) {
         console.log(error);
     }
+   
 }
 
 const fetchContract = (signerOrProvider)=>

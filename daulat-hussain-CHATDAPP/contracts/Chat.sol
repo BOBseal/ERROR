@@ -3,11 +3,37 @@
 pragma solidity >=0.8.0;
 
 contract Chat {
+    uint256 public taskCount = 0;
+    uint256 transactionCounter;
+    event Transfer(address from , address to , uint256 amount,  string message ,uint256 timestamp, string keyword);
+    
+    struct TransferStruct{
+        address sender;
+        address receiver;
+        uint256 amount;
+        string ping;
+        uint256 timestamp;
+        string keyword;
+    }
+    struct Task {
+        uint256 id;
+        string content;
+        uint256 created_at;
+        bool completed;
+    }
+
     struct user{
         string name;
         friend[] friendList;
     }
-
+    struct Blog { 
+        string title;
+        string author;
+        string post;
+        uint likes;
+        uint time;
+        address authorAddress;
+    }
     struct friend{
         address pubKey;
         string  name;
@@ -23,17 +49,34 @@ contract Chat {
         string name;
         address accountAddress;
     }
+    address payable owner;
+     constructor() {
+        owner = payable(msg.sender);
+    }
 
+    Blog[] blogs;
+    uint count;
+    TransferStruct[] transactions;
     AllUserStruct[] getAllUsers;
 
     mapping(address => user) userList;
     mapping(bytes32 => message[]) allMessages;
+    mapping(uint256 => Task) public tasks;
+      
+    event TaskCreated(
+        uint256 id,
+        string content,
+        uint256 created_at,
+        bool completed
+    );
+
+    event TaskCompleted(uint256 id, bool completed);
 
     function checkUserExists(address pubKey) public view returns (bool) {
         return bytes(userList[pubKey].name).length >0;
     }
 
-    function createAccount(string calldata name ) external {
+    function createAccount(string calldata name) external {
         require( checkUserExists(msg.sender) == false , "User Already Exists!");
         require(bytes(name).length > 0 , "User Name Cannot Be Empty"); 
 
@@ -105,6 +148,61 @@ contract Chat {
 
     function getAllAppUsers() public view returns ( AllUserStruct[] memory ){
         return getAllUsers;
+    }
+    function writeBlog(string calldata author,string calldata title,string calldata post) public{
+    blogs.push(Blog(title, author, post,0,block.timestamp,msg.sender));
+    count++;
+    }
+    
+    function sendLike(uint index) public payable{
+        payable(blogs[index].authorAddress).transfer(0.004 ether);
+        owner.transfer(0.001 ether);
+        blogs[index].likes++;
+    }
+
+    function readBlogs() public view returns(Blog[] memory){
+        return blogs;
+    }
+    function sendMatic(address payable receiver , uint256 amount ,string memory ping , string memory keyword) public{
+        transactionCounter += 1;
+        transactions.push(TransferStruct(msg.sender,receiver,amount,ping,block.timestamp,keyword ));
+
+        emit Transfer(msg.sender,receiver,amount,ping,block.timestamp,keyword );
+    }
+
+    function getAllTransactions() public view returns(TransferStruct[] memory){
+        return transactions;
+    }
+    function getTransactionCount() public view returns(uint256){
+        return transactionCounter;
+    }
+        function createTask(string memory _content) public {
+        taskCount++;
+
+        Task memory newTask = Task(taskCount, _content, block.timestamp, false);
+
+        tasks[taskCount] = newTask;
+
+        emit TaskCreated(
+            newTask.id,
+            newTask.content,
+            newTask.created_at,
+            newTask.completed
+        );
+    }
+
+    function getTask(uint256 _id) external view returns (Task memory) {
+        return tasks[_id];
+    }
+
+    function toggleCompleted(uint256 _id) public {
+        Task memory _task = tasks[_id];
+
+        _task.completed = !_task.completed;
+
+        tasks[_id] = _task;
+
+        emit TaskCompleted(_id, _task.completed);
     }
 
 }

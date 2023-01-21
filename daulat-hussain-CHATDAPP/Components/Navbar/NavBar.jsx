@@ -10,7 +10,7 @@ import images from '../../IMAGES/index'
 const NavBar = () => {
   const menuItems = [
     {
-      menu : "All Users",
+      menu : "UserList",
       link: "alluser"
     },
     {
@@ -18,20 +18,20 @@ const NavBar = () => {
       link: "/"
     },
     {
-      menu : "CONTACT",
-      link: "/"
+      menu : "BLACKBOARD",
+      link: "/blog"
     },
     {
-      menu : "SETTINGS",
-      link: "/"
+      menu : "ToDo",
+      link: "/todo"
+    },
+    {
+      menu : "WORMHOLE",
+      link: "/Transfer"
     },
     {
       menu : "ABOUT",
-      link: "/"
-    },
-    {
-      menu : "Terms & Conditions",
-      link: "/"
+      link: "/about"
     },
   ] ;
 
@@ -217,7 +217,7 @@ const NavBar = () => {
                             </svg>
                            </> }
                            {""}
-                           <small> {userName  || "Create Account "}</small>
+                           <small> {userName.slice(0,5)  || "Create Account "}</small>
                       </button>
                     )}
                   </div>

@@ -25,6 +25,7 @@ const allUser = () => {
                 </div>
 
         </div>
+        <small className={S.beta}>PAGE IN BETA STAGE AND HENCE MOST FUNCTIONS ARE DISABLED RN!!</small>
     </div>
   )
 }
