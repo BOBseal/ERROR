@@ -5,7 +5,7 @@ import{convertTime} from '../../../Utils/apiFeatures'
 import { Loader } from '../../index';
 
 
-const Chat = ({functionName, readMessage, friendMsg, account, userName, 
+const Chat = ({seND, readMessage, friendMsg, account, userName, 
     loading,currentUserName,currentUserAddress ,transferEth}) => {
   const [message, setmessage] = useState('');
   const [chatData, setchatData] = useState({name: "" , address: ""});
@@ -66,7 +66,7 @@ const Chat = ({functionName, readMessage, friendMsg, account, userName,
                         <>smile img</>
                         <input type='text' placeholder='Type Message Here' onChange={(e)=>setmessage(e.target.value)}/>
                         <>img.file</>
-                        {loading == true?(<Loader/>):(<div onClick={()=> functionName({ address:chatData.address,msg: message})}>Send Icon</div>)}
+                        {loading == true?(<Loader/>):(<div onClick={()=> seND({ address:chatData.address,msg: message})}>Send Icon</div>)}
                     </div>
                 </div>
             </>

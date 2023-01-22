@@ -22,7 +22,7 @@ const Friend = () => {
               </div>
           </div>
           <div className={S.Friend_boxRight}>
-               <Chat functionName={sendMessage} readMessage={readMessage} friendMsg={friendMsg} account={account} userName={userName} 
+               <Chat seND={sendMessage} readMessage={readMessage} friendMsg={friendMsg} account={account} userName={userName} 
                 loading={loading} currentUserName={currentUserName} currentUserAddress={currentUserAddress} transferEth={transferEth}/>
           </div>
 

@@ -7,6 +7,10 @@
 }
 .REX{
   padding: 2rem;
+  align-items: center;
+}
+.REXX{
+  display: flex;
 }
 
 .PulseDots{
