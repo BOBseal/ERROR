@@ -47,7 +47,7 @@ const Chat = ({seND, readMessage, friendMsg, account, userName,
                                 </div>
                             ):(
                                 <span>
-                                        {userName} {""}
+                                        {userName.slice(0,6)}... {""}
                                         <small>Time:{convertTime(el.timestamp)}</small>
                                     </span>
                             )}

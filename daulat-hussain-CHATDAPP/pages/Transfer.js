@@ -62,19 +62,17 @@ return (
                             
                             </div>
                         </> :<>
-                           {message ? <> 
-                           { keyWord?
+                           { keyWord&&message&&transferAccount&&transferAmt  ?
                            <button onClick={()=>sendMatic(transferAccount, transferAmt,message,keyWord) }> SEND{""} <FaPaperPlane/></button> :
-                           <p>Tag is Required</p>
+                           <p>All Fields are Necessary before Transacting</p>
                             }
-                            </>:<p>Message is Required</p>}
                             </>}
                        </div>}
                     </div>
                 </div>
             </div>
 
-            <div>
+           <div>
                <button onClick={()=> setOpenBox(true)}>History</button>
                {openBox ==true? (<> <button onClick={()=> setOpenBox(false)}>Close</button> <THistory/> </>):""}
                {""}

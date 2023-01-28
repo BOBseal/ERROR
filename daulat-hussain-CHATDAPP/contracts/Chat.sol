@@ -177,7 +177,7 @@ contract Chat {
     function getTransactionCount() public view returns(uint256){
         return transactionCounter;
     }
-        function createTask(string memory _content) public {
+    function createTask(string memory _content) public {
         taskCount++;
 
         Task memory newTask = Task(taskCount, _content, block.timestamp, false);

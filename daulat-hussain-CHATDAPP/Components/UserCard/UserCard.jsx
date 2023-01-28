@@ -1,9 +1,10 @@
 import React,{useContext} from 'react'
+import { ChatContext } from '../../context/ChatContext'
 import S from './UserCard.module.css'
 
 
 const USERCARD = ( {el , i , addFriend }) => {
-  
+  //const {currentUserAddress}=useContext(ChatContext);
   return (
     <div className={S.UserCard}>
       <div className={S.UserCard_box}>
@@ -18,11 +19,11 @@ const USERCARD = ( {el , i , addFriend }) => {
                 {el.name} 
               </h3>
 
-              <p className={S.fd}> {el.accountAddress.slice(2)} </p>
+              <p className={S.fd}> {el.accountAddress} </p>
 
-              {/*<button className={S.UserCard_boxInfoBtn} onClick={()=>addFriend( {name:el.name ,accoundAddress: el.accountAddress } ) }>
+             <button className={S.UserCard_boxInfoBtn} onClick={()=>addFriend({name:el.name ,accountAddress:el.address} ) }>
                 ADD FRIEND
-  </button>*/}
+                </button>   
 
           </div>
       </div>

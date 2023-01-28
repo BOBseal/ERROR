@@ -4,7 +4,7 @@ import S from '../styles/alluser.module.css'
 import { ChatContext } from '../context/ChatContext'
 
 const allUser = () => {
-    const {userLists , addFriend } = useContext(ChatContext);
+    const {userLists , addFriend,currentUserAddress, currentUserName} = useContext(ChatContext);
   return (
     <div className={S.Main}>
         <div>
@@ -19,7 +19,7 @@ const allUser = () => {
 
                 <div className={S.alluser}>
                     {userLists.map((el,i) =>(
-                        <USERCARD key={i+1} el={el} i={i} addFriend={()=>addFriend( )}/>
+                        <USERCARD key={i+1} el={el} i={i} addFriend={addFriend}/>
                     ) )}
                     
                 </div>

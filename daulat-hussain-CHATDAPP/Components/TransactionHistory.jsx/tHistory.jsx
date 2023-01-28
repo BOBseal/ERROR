@@ -8,14 +8,17 @@ const THistory = () => {
 const {account, transactionCount,getAllTransactions } =useContext(ChatContext);
 const [openBox , setOpenBox] = useState(false);
 const [readMessage , setReadMessage] = useState("");
-//const Transactions =[];
+const Transactions =[{transactionCount}];
 
+useEffect(() => {
+  getAllTransactions;
+}, [])
 
  return (
     <div>
         <h2>TRANSACTION HISTORY</h2>
         <div>
-        <button onClick={()=>(setOpenBox(true) , setReadMessage("YOUR MEEEESSAFE")) }>
+        <button onClick={()=>(setOpenBox(true) , setReadMessage(el.message)) }>
                        Show Message
                    </button>
                    <button onClick={()=> setOpenBox(false)}>Hide Messages</button>

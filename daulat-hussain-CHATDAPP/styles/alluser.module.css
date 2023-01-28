@@ -31,7 +31,7 @@
     gap: 3rem;
 }
 
-@media only screen and (max-width: 35em) {
+@media only screen and (max-width: 55em) {
     .alluser{
         width: 90%;
         grid-template-columns: 1fr ;

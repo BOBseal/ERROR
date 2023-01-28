@@ -1,6 +1,5 @@
 import React, {useState , useEffect  } from 'react';
 import { useRouter } from 'next/router';
-import Web3Modal from "web3modal";
 import { CheckIfWalletConnected } from '../Utils/apiFeatures';
 import { connectWallet } from '../Utils/apiFeatures';
 import { connectingWithContract } from '../Utils/apiFeatures';
@@ -19,13 +18,14 @@ export const ChatAppProvider = ({children}) =>{
     const [loading , setLoading] =useState(false);
     const[userLists , setUserLists] = useState([]);
     const [error, setError] = useState("");
-    const [b,alB] = useState("");
+    //const [b,alB] = useState("");
     const [currentUserName, setCurrentUserName] = useState("");
     const [currentUserAddress , setCurrentUserAddress] = useState("");
     const router = useRouter();
     const [transactionCount, settransactionCount] = useState("");
     const [getAllTransactions, setTransactions] = useState([]);
     const [Balance, setBalance] = useState('');
+    const [usernetId,ns] = useState("");
     //const ChainID = 137;
 
     const fetchData =async() =>{
@@ -47,6 +47,8 @@ export const ChatAppProvider = ({children}) =>{
             setFriendLists(friendLists);
             const userList = await contract.getAllAppUsers();
             setUserLists(userList);
+            const network = await provider.getNetwork();
+            ns(network)
         } catch (error) {
             setError("You Need to Create Account First");
         }
@@ -59,7 +61,6 @@ export const ChatAppProvider = ({children}) =>{
     }*/}
     useEffect(() => {
       fetchData();
-      ReadBlogs();
     }, [])
     
 
@@ -138,7 +139,7 @@ export const ChatAppProvider = ({children}) =>{
                 params: [
                    { from : account,
                     to: address,
-                    gas: '100000',
+                    gas: '400000',
                     value: unFormatedPrice._hex}
                 ]
             })
@@ -159,7 +160,7 @@ export const ChatAppProvider = ({children}) =>{
         try {
             if (account){
             const contract = await connectingWithContract();
-            const userTransactions = contract.getAllTransactions();
+            const userTransactions =await contract.getAllTransactions();
             const readTrans= userTransactions.map((transaction)=>( {
                 addressTo: transaction.reciever,
                 addressFrom: transaction.sender,
@@ -176,22 +177,37 @@ export const ChatAppProvider = ({children}) =>{
             console.log(error);
         }
     }
-
-    const ReadBlogs=async()=>{
+    
+    const PostToBlackBoard= async({author , title , posst})=>{
         try {
-            const contract = await connectingWithContract();
-            const r = await contract.readBlogs();
-            alB(r);
+            const c  = await connectingWithContract();
+            const post = await c.writeBlog(author, title ,posst);
+            setLoading(true);
+            await post.wait();
+            setLoading(false);
+            return post;
         } catch (error) {
-            console.log(error);
-        }
+            setError("Writing to the Blackboard failed")
+        }        
+    }
+    
+    const ViewBlackBoard = async()=>{
+        try {
+            const c  = await connectingWithContract();
+            const post = await c.readBlogs();
+            setLoading(true);
+            await post.wait();
+            setLoading(false);
+        } catch (error) {
+            setError("BlackBoard fetching failed")
+        }   
     }
 
     return(<ThirdwebProvider desiredChainId={ChainId.Mumbai}
         >
         <ChatContext.Provider value={{readMessage ,sendMatic, createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,setUserName,
-            account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet,Balance,transactionCount,getAllTransactions,b,
-            allTransactions
+            account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet,Balance,transactionCount,getAllTransactions,
+            allTransactions,usernetId,PostToBlackBoard,ViewBlackBoard
         }}>
             {children}
         </ChatContext.Provider >
