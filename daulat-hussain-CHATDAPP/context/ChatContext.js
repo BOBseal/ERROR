@@ -5,6 +5,7 @@ import { CheckIfWalletConnected } from '../Utils/apiFeatures';
 import { connectWallet } from '../Utils/apiFeatures';
 import { connectingWithContract } from '../Utils/apiFeatures';
 import { ethers } from 'ethers';
+import { ThirdwebProvider, ChainId } from '@thirdweb-dev/react';
 //import { convertTime } from '../Utils/apiFeatures';
 
 
@@ -18,19 +19,27 @@ export const ChatAppProvider = ({children}) =>{
     const [loading , setLoading] =useState(false);
     const[userLists , setUserLists] = useState([]);
     const [error, setError] = useState("");
-
+    const [b,alB] = useState("");
     const [currentUserName, setCurrentUserName] = useState("");
     const [currentUserAddress , setCurrentUserAddress] = useState("");
     const router = useRouter();
     const [transactionCount, settransactionCount] = useState("");
-    const [transactions, setTransactions] = useState([]);
-    const ChainID = 137;
+    const [getAllTransactions, setTransactions] = useState([]);
+    const [Balance, setBalance] = useState('');
+    //const ChainID = 137;
 
     const fetchData =async() =>{
         try {
             const contract = await connectingWithContract();
+            const accounts = await window.ethereum.request({
+                method: "eth_requestAccounts",
+            });
             const connectAccount = await connectWallet();
             setAccount(connectAccount);
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const getBal= await provider.getBalance(accounts[0]);
+            const ball = ethers.utils.formatEther(getBal);
+            setBalance(ball);
             //window.location.reload();
            const userName =await contract.getUsername(connectAccount); 
             setUserName(userName);
@@ -38,15 +47,21 @@ export const ChatAppProvider = ({children}) =>{
             setFriendLists(friendLists);
             const userList = await contract.getAllAppUsers();
             setUserLists(userList);
-            
         } catch (error) {
             setError("You Need to Create Account First");
         }
     };
-
-    useEffect(()=> {
-        fetchData();
-    },[]);
+  {/*  const checkWalletNetwork=async()=>{
+        useEffect(()=> {
+            fetchData();
+        },[]);
+        window.location.reload;
+    }*/}
+    useEffect(() => {
+      fetchData();
+      ReadBlogs();
+    }, [])
+    
 
     const readMessage = async(friendAddress) => {
         try {
@@ -115,28 +130,71 @@ export const ChatAppProvider = ({children}) =>{
         try {
             if (account){
             const contract = await connectingWithContract();
+          //  const send = await contract.sendMatic(address,ether,message,keyword)
             const unFormatedPrice = ethers.utils.parseEther(ether);
+            
             await ethereum.request({
                 method: 'eth_sendTransaction',
                 params: [
                    { from : account,
                     to: address,
-                    gas: "0x5208",
+                    gas: '100000',
                     value: unFormatedPrice._hex}
                 ]
             })
-        }
-            
+            const send = await contract.sendMatic(address,unFormatedPrice,message,keyword);
+            setLoading(true);
+            await send.wait();
+            setLoading(false);
+            const transactionCount = await contract.getTransactionCount();
+            settransactionCount(transactionCount.toNumber());
+            window.location.reload();
+        }  
         } catch (error) {
             console.log(error);
         }
     }
 
-    return(
+    const allTransactions =async()=>{
+        try {
+            if (account){
+            const contract = await connectingWithContract();
+            const userTransactions = contract.getAllTransactions();
+            const readTrans= userTransactions.map((transaction)=>( {
+                addressTo: transaction.reciever,
+                addressFrom: transaction.sender,
+                timestamp: new Date(transaction.timestamp.toNumber()*1000).toLocaleString(),
+                message: transaction.ping,
+                amount:parseInt(transaction.amount._hex)/10 **18,
+                tag: transaction.keyword
+            }));
+            setTransactions(readTrans);
+            }else{
+                console.log("Reload Window");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const ReadBlogs=async()=>{
+        try {
+            const contract = await connectingWithContract();
+            const r = await contract.readBlogs();
+            alB(r);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    return(<ThirdwebProvider desiredChainId={ChainId.Mumbai}
+        >
         <ChatContext.Provider value={{readMessage ,sendMatic, createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,setUserName,
-            account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet,
+            account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet,Balance,transactionCount,getAllTransactions,b,
+            allTransactions
         }}>
             {children}
         </ChatContext.Provider >
+        </ThirdwebProvider>
     )
 };

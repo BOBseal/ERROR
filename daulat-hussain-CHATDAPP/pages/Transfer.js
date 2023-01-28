@@ -6,7 +6,7 @@ import THistory from '../Components/TransactionHistory.jsx/tHistory'
 import Style from '../styles/comingsoon.module.css'
 
 const Transfer = () => {
-const {sendMatic,account,loading } =useContext(ChatContext);
+const {sendMatic,account,loading,Balance ,b} =useContext(ChatContext);
 const [transferAmt, settransferAmt] = useState('');
 const [transferAccount, settransferAccount] = useState("");
 const [message, setmessage] = useState("");
@@ -18,17 +18,17 @@ return (
 
        <div>
             <h1>
-                Transfer Crypto
+                WORMHOLE
             </h1>
-            <p>Description... bla bla bla{""}</p>
+            <p>Wormhole is a Money Transfer Functionality utilizing a Smart Contract for its core and thus removing access of Thirdparty into your wallet and into the Transaction Process.{""} Transfer Matic and Keep a Record of the Transaction By assigning it a Tag and a Message as Extra MetaData that will stay forever on the Blockchain </p>
+            <p></p>
             <div>
-                <div>TRANSFER IMG</div>
                 <div>
-                    <h2>NOW TRANS ETH</h2>
+                    <h2>TRANSFER MATIC</h2>
                     <div>
                         <p></p>
-                        <p>acc</p>
-                        <p>Balance</p>
+                        <p>Your Address: {account.slice(0,4)}...{account.slice(36)}</p>
+                        <p>Balance: {Balance} MATIC</p>
                     </div>
 
                     <div>
@@ -61,8 +61,14 @@ return (
                             <svg className={Style.PulseDots3} width="20px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#00e6e6" fill-rule="evenodd" d="M8 3a5 5 0 100 10A5 5 0 008 3zm0 1.5v7a3.5 3.5 0 100-7z" clip-rule="evenodd"/></svg>
                             
                             </div>
-                        </> :
-                            <button onClick={()=>sendMatic(transferAccount, transferAmt,message,keyWord) }> SEND{""} <FaPaperPlane/></button>}
+                        </> :<>
+                           {message ? <> 
+                           { keyWord?
+                           <button onClick={()=>sendMatic(transferAccount, transferAmt,message,keyWord) }> SEND{""} <FaPaperPlane/></button> :
+                           <p>Tag is Required</p>
+                            }
+                            </>:<p>Message is Required</p>}
+                            </>}
                        </div>}
                     </div>
                 </div>

@@ -5,13 +5,17 @@ import {ChatAppAddress , ChatAppAbi} from '../context/constants';
 const ChainID = 137;
 
 export const CheckIfWalletConnected = async()=> {
+   // const [bal, setBal]
     try {
         if(!window.ethereum) return console.log("INSTALL METAMASK OR WEB3-Wallet");
         const accounts = await window.ethereum.request({
             method: "eth_accounts",
         });
         const firstAccount = accounts[0];
-        return firstAccount;
+       // const provider = new ethers.providers.Web3Provider(window.ethereum);
+       // const getBal= await provider.getBalance(accounts[0]);
+      //  const ball = ethers.utils.formatEther(getBal);
+        return firstAccount; 
     } catch (error) {
         console.log(error);
     }

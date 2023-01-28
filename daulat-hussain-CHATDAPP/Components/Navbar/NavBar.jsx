@@ -30,7 +30,7 @@ const NavBar = () => {
       link: "/Transfer"
     },
     {
-      menu : "MAGIC-TUNNEL",
+      menu : "INCOGNITO-TRANSFER",
       link: "/comingsoon"
     },
     {
@@ -221,7 +221,7 @@ const NavBar = () => {
                             </svg>
                            </> }
                            {""}
-                           <small> {userName.slice(0,5)  || "Create Account "}</small>
+                           <small> { <div>{userName.slice(0,5)}</div> || "Create Account "}</small>
                       </button>
                     )}
                   </div>

@@ -5,7 +5,6 @@ pragma solidity >=0.8.0;
 contract Chat {
     uint256 public taskCount = 0;
     uint256 transactionCounter;
-    event Transfer(address from , address to , uint256 amount,  string message ,uint256 timestamp, string keyword);
     
     struct TransferStruct{
         address sender;
@@ -71,7 +70,9 @@ contract Chat {
     );
 
     event TaskCompleted(uint256 id, bool completed);
+    event Transfer(address from , address to , uint256 amount,  string message ,uint256 timestamp, string keyword);
 
+    
     function checkUserExists(address pubKey) public view returns (bool) {
         return bytes(userList[pubKey].name).length >0;
     }

@@ -66,7 +66,7 @@ const Chat = ({seND, readMessage, friendMsg, account, userName,
                         <>smile img</>
                         <input type='text' placeholder='Type Message Here' onChange={(e)=>setmessage(e.target.value)}/>
                         <>img.file</>
-                        {loading == true?(<Loader/>):(<div onClick={()=> seND({ address:chatData.address,msg: message})}>Send Icon</div>)}
+                        {loading == true?(<Loader/>):(<div onClick={()=> seND({ address:currentUserAddress,msg: message})}>Send Icon</div>)}
                     </div>
                 </div>
             </>
