@@ -18,7 +18,7 @@ export const ChatAppProvider = ({children}) =>{
     const [loading , setLoading] =useState(false);
     const[userLists , setUserLists] = useState([]);
     const [error, setError] = useState("");
-    //const [b,alB] = useState("");
+    const [blogs,xx] = useState([]);
     const [currentUserName, setCurrentUserName] = useState("");
     const [currentUserAddress , setCurrentUserAddress] = useState("");
     const router = useRouter();
@@ -52,6 +52,7 @@ export const ChatAppProvider = ({children}) =>{
         } catch (error) {
             setError("You Need to Create Account First");
         }
+        
     };
   {/*  const checkWalletNetwork=async()=>{
         useEffect(()=> {
@@ -61,9 +62,20 @@ export const ChatAppProvider = ({children}) =>{
     }*/}
     useEffect(() => {
       fetchData();
+      rdp();
     }, [])
-    
-
+    const rdp = async(address)=>{
+        try {
+            const c = await connectingWithContract();
+            const r = await c.readBlogs(address);
+            setLoading(true);
+            await r.wait();
+            setLoading(false);
+            xx(r);
+        } catch (error) {
+            console.log("reload")
+        }
+    }
     const readMessage = async(friendAddress) => {
         try {
             const contract = await connectingWithContract();
@@ -178,36 +190,25 @@ export const ChatAppProvider = ({children}) =>{
         }
     }
     
-    const PostToBlackBoard= async({author , title , posst})=>{
+    const PostToBlackBoard= async(author , title , posst)=>{
         try {
             const c  = await connectingWithContract();
             const post = await c.writeBlog(author, title ,posst);
             setLoading(true);
             await post.wait();
             setLoading(false);
+            window.location.reload();
             return post;
         } catch (error) {
             setError("Writing to the Blackboard failed")
         }        
-    }
-    
-    const ViewBlackBoard = async()=>{
-        try {
-            const c  = await connectingWithContract();
-            const post = await c.readBlogs();
-            setLoading(true);
-            await post.wait();
-            setLoading(false);
-        } catch (error) {
-            setError("BlackBoard fetching failed")
-        }   
     }
 
     return(<ThirdwebProvider desiredChainId={ChainId.Mumbai}
         >
         <ChatContext.Provider value={{readMessage ,sendMatic, createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,setUserName,
             account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet,Balance,transactionCount,getAllTransactions,
-            allTransactions,usernetId,PostToBlackBoard,ViewBlackBoard
+            allTransactions,usernetId,PostToBlackBoard,blogs
         }}>
             {children}
         </ChatContext.Provider >

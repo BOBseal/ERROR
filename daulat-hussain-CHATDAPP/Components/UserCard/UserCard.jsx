@@ -21,9 +21,9 @@ const USERCARD = ( {el , i , addFriend }) => {
 
               <p className={S.fd}> {el.accountAddress} </p>
 
-             <button className={S.UserCard_boxInfoBtn} onClick={()=>addFriend({name:el.name ,accountAddress:el.address} ) }>
+            {/* <button className={S.UserCard_boxInfoBtn} onClick={()=>addFriend({name:el.name ,accountAddress:el.address} ) }>
                 ADD FRIEND
-                </button>   
+                </button>   */}
 
           </div>
       </div>

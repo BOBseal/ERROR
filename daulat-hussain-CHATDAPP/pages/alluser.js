@@ -4,7 +4,7 @@ import S from '../styles/alluser.module.css'
 import { ChatContext } from '../context/ChatContext'
 
 const allUser = () => {
-    const {userLists , addFriend,currentUserAddress, currentUserName} = useContext(ChatContext);
+    const {userLists , addFriend} = useContext(ChatContext);
   return (
     <div className={S.Main}>
         <div>
