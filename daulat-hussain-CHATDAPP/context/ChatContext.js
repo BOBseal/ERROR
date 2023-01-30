@@ -49,25 +49,25 @@ export const ChatAppProvider = ({children}) =>{
             setUserLists(userList);
             const network = await provider.getNetwork();
             ns(network)
+            const r = await contract.readBlogs();
+            xx(r);
         } catch (error) {
             setError("You Need to Create Account First");
         }
         
     };
-  {/*  const checkWalletNetwork=async()=>{
-        useEffect(()=> {
-            fetchData();
-        },[]);
-        window.location.reload;
-    }*/}
+
+
     useEffect(() => {
       fetchData();
-      rdp();
     }, [])
-    const rdp = async(address)=>{
+
+
+
+    {/*const rdp = async()=>{
         try {
             const c = await connectingWithContract();
-            const r = await c.readBlogs(address);
+            const r = await c.readBlogs();
             setLoading(true);
             await r.wait();
             setLoading(false);
@@ -75,7 +75,7 @@ export const ChatAppProvider = ({children}) =>{
         } catch (error) {
             console.log("reload")
         }
-    }
+    }*/}
     const readMessage = async(friendAddress) => {
         try {
             const contract = await connectingWithContract();
@@ -204,7 +204,7 @@ export const ChatAppProvider = ({children}) =>{
         }        
     }
 
-    return(<ThirdwebProvider desiredChainId={ChainId.Mumbai}
+    return(<ThirdwebProvider desiredChainId={ChainId.Fantom}
         >
         <ChatContext.Provider value={{readMessage ,sendMatic, createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,setUserName,
             account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet,Balance,transactionCount,getAllTransactions,

@@ -24,11 +24,11 @@ return (
             <p></p>
             <div>
                 <div>
-                    <h2>TRANSFER MATIC</h2>
+                    <h2>TRANSFER FANTOM</h2>
                     <div>
                         <p></p>
                         <p>Your Address: {account.slice(0,4)}...{account.slice(36)}</p>
-                        <p>Balance: {Balance} MATIC</p>
+                        <p>Balance: {Balance} FTM</p>
                     </div>
 
                     <div>
