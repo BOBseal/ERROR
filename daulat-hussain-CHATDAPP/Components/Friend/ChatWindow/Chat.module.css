@@ -2,5 +2,76 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    width: 100%;
     align-items: center;
+    justify-content: left;
+}
+.ChatBox{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 2rem;
+}
+.ChatUserInfo{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(30, 99, 99, 0.165);
+    border-radius: 20%;
+    border-radius: 2rem;
+    align-items: center;
+}
+.ChatUserInfoBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ChatBoxSnd{
+   padding-left: 10rem;
+}
+.INPUT{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    height: 4rem;
+    border-radius: 1rem;
+    width: 70%;
+}
+.ChatBoxLeft{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: rgba(85, 81, 81, 0.186);
+    padding-left: 10rem;
+    padding-right: 10rem;
+    border-radius: 1rem;
+}
+.Boxx{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.611);
+    border-radius: 2rem;
+    color: rgb(155, 203, 248);
+    justify-content: center;
+    text-align: center;
+}
+.SSSS{
+    cursor:grabbing;
+}
+.msg{
+
+}
+@media only screen and (max-width: 55em){
+    .ChatBoxSndImg{
+        gap: 0.4rem;
+    }
+    .INPUT{
+        width: 10rem;
+        height: 2.5rem;
+    }
+    .ChatBoxSnd{
+        padding-left: 0.2rem;
+     }
+     .ChatBoxLeft{
+         padding-left:1rem ;
+         padding-right: 1rem;
+     }
 }

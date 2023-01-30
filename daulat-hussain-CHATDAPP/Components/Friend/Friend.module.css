@@ -21,6 +21,10 @@
 .Friend_boxLeft h2{
     text-align: center;
 }
+.Friend_boxRight{
+    border-radius: 0.8rem;
+    width: 98%;
+}
 
 @media only screen and(max-width: 45em){
     .Friend{
@@ -28,6 +32,8 @@
     }
     .Friend_box{
         grid-template-columns: 1fr;
+    }
+    .Friend_boxRight{
     }
     
 }
