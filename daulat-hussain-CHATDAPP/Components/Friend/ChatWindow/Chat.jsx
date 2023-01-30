@@ -3,10 +3,11 @@ import S from './Chat.module.css';
 import { useRouter } from 'next/router';
 import{convertTime} from '../../../Utils/apiFeatures'
 import { Loader } from '../../index';
+import {FaPaperPlane , FaPaperclip} from 'react-icons/fa'
 
 
-const Chat = ({seND, readMessage, friendMsg, account, userName, 
-    loading,currentUserName,currentUserAddress ,transferEth}) => {
+const Chat = ({seND,  friendMsg, 
+    loading,currentUserName,currentUserAddress }) => {
   const [message, setmessage] = useState('');
   const [chatData, setchatData] = useState({name: "" , address: ""});
   const router = useRouter();
@@ -47,12 +48,12 @@ const Chat = ({seND, readMessage, friendMsg, account, userName,
                                 </div>
                             ):(
                                 <span>
-                                        {userName.slice(0,6)}... {""}
+                                       <h5> {el.sender.slice(0,3)}...{el.sender.slice(38)} </h5>{""}
                                         <small>Time:{convertTime(el.timestamp)}</small>
                                     </span>
                             )}
                             <p key={i+1}>
-                                {el.msg}
+                              message:  {el.msg}
                             </p>
                         </div>
                     ))}
@@ -63,11 +64,15 @@ const Chat = ({seND, readMessage, friendMsg, account, userName,
             <>
                 <div className={S.ChatBoxSnd}>
                     <div className={S.ChatBoxSndImg}>
-                        <>smile img</>
-                        <input type='text' placeholder='Type Message Here' onChange={(e)=>setmessage(e.target.value)}/>
-                        <>img.file</>
-                        {loading == true?(<Loader/>):(<div onClick={()=> seND({ address:currentUserAddress,msg: message})}>Send Icon</div>)}
+                        <input type='text' placeholder='Type at least One Character' onChange={(e)=>setmessage(e.target.value)}/>
+                        {loading == true?(<Loader/>):(
+                        <div>
+                          { message? <button onClick={()=> seND({ address:currentUserAddress,msg: message})}><FaPaperPlane/></button>:<button>disabled</button>}
+                        </div>
+                        )}
+                        <button><FaPaperclip/></button>
                     </div>
+                    
                 </div>
             </>
             ):("") }

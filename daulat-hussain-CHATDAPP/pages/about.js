@@ -1,8 +1,8 @@
 import React from 'react'
-
+import S from '../styles/about.module.css'
 const about = () => {
   return (
-    <div>
+    <div className={S.aa}>
         <h1>PERSONAL PROJECT BY BISHAL USING WEB3</h1>
         <p>HAS MANY BUGS AND IS IN ALPHA STAGE OF DEVELOPMENT</p>
         <p>CONTACT ME ON INSTAGRAM : @b.k.bh</p>

@@ -2,7 +2,8 @@
     position: fixed;
     align-items: center;
     text-align: center;
-    inset: 25% 25% 35% 25%;
+    inset: 40% 25% 35% 25%;
+    width: 20rem;
     z-index:111111111;
     margin: 0 auto;
     border-radius: 1rem;
@@ -17,6 +18,8 @@
 @media only screen and (max-width:35em){
     .Error{
         height: 43%;
+        width: 8rem;
+        
     }
     .Error_box h1{
         padding: 0.5rem;

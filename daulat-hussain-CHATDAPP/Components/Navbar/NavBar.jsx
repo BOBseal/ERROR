@@ -221,7 +221,7 @@ const NavBar = () => {
                             </svg>
                            </> }
                            {""}
-                           <small> { <div>{userName.slice(0,5)}</div> || "Create Account "}</small>
+                           <small> { <div>{userName.slice(0,5)}...</div> || "Create Account "}</small>
                       </button>
                     )}
                   </div>

@@ -16,17 +16,18 @@
     background-color: rgba(0, 0, 0, 0.15);
     padding: 1rem;
     border-radius: 0.8rem;
-    width: 100%;
+    width: 80%;
 }
 .Friend_boxLeft h2{
     text-align: center;
 }
 
-@media only screen and(max-width: 35em){
+@media only screen and(max-width: 45em){
     .Friend{
         width: 100%;
     }
     .Friend_box{
         grid-template-columns: 1fr;
     }
+    
 }
