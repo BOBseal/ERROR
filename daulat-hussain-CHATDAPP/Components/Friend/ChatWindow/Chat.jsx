@@ -51,9 +51,19 @@ const Chat = ({seND,  friendMsg,
                                         <small>Time:{convertTime(el.timestamp)}</small>
                                     </span>
                             )}
-                            <p key={i+1} className={S.msg}>
-                              message:  {el.msg}
-                            </p>
+                            <div key={i+1} className={S.msg}>
+                                <h5>Message :</h5>
+                                <p>{el.msg.slice(0,64)}</p>
+                                <p>{el.msg.slice(64,128)}</p>
+                                <p>{el.msg.slice(128,192)}</p>
+                                <p>{el.msg.slice(192,256)}</p>
+                                <p>{el.msg.slice(256,320)}</p>
+                                <p>{el.msg.slice(320,384)}</p>
+                                <p>{el.msg.slice(384,448)}</p>
+                                <p>{el.msg.slice(448,512)}</p>
+                                <p>{el.msg.slice(512,576)}</p>
+                                <p>{el.msg.slice(576,640)}</p>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -62,10 +72,10 @@ const Chat = ({seND,  friendMsg,
             <>
                 <div className={S.ChatBoxSnd}>
                     <div className={S.ChatBoxSndImg}>
-                        <input type='text' placeholder='Type at least One Character' onChange={(e)=>setmessage(e.target.value)} className={S.INPUT}/>
+                        <input type='text' placeholder='Must be from 1 to 640 Characters' onChange={(e)=>setmessage(e.target.value)} className={S.INPUT} maxLength={640} minLength={1}/>
                         {loading == true?(<Loader/>):(
                         <div className={S.SSSS}>
-                          { message? <button className={S.SSSS} onClick={()=> seND({ address:currentUserAddress,msg: message})}><FaPaperPlane/> SEND</button>:<button className={S.SSSS} >disabled</button>}
+                          { message? <button className={S.SSSS} onClick={()=> seND({ address:currentUserAddress,msg: message})}><FaPaperPlane/> SEND</button>:<h5 className={S.SSSS} >Type Something first</h5>}
                         </div>
                         )}
                         

@@ -190,10 +190,10 @@ export const ChatAppProvider = ({children}) =>{
         }
     }
     
-    const PostToBlackBoard= async(author , title , posst)=>{
+    const PostToBlackBoard= async(author , title , postcontent)=>{
         try {
             const c  = await connectingWithContract();
-            const post = await c.writeBlog(author, title ,posst);
+            const post = await c.writeBlog(author, title ,postcontent);
             setLoading(true);
             await post.wait();
             setLoading(false);
@@ -204,7 +204,7 @@ export const ChatAppProvider = ({children}) =>{
         }        
     }
 
-    return(<ThirdwebProvider desiredChainId={ChainId.Fantom}
+    return(<ThirdwebProvider desiredChainId={ChainId.Mumbai}
         >
         <ChatContext.Provider value={{readMessage ,sendMatic, createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,setUserName,
             account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet,Balance,transactionCount,getAllTransactions,
