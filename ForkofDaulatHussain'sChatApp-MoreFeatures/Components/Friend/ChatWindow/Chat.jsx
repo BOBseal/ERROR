@@ -47,22 +47,22 @@ const Chat = ({seND,  friendMsg,
                                 </div>
                             ):(
                                 <span>
-                                       <h5> {el.sender.slice(0,3)}...{el.sender.slice(38)} </h5>{""}
+                                       <h5> from :{el.sender.slice(0,3)}...{el.sender.slice(38)} </h5>{""}
                                         <small>Time:{convertTime(el.timestamp)}</small>
                                     </span>
                             )}
                             <div key={i+1} className={S.msg}>
                                 <h5>Message :</h5>
-                                <p>{el.msg.slice(0,64)}</p>
-                                <p>{el.msg.slice(64,128)}</p>
-                                <p>{el.msg.slice(128,192)}</p>
-                                <p>{el.msg.slice(192,256)}</p>
-                                <p>{el.msg.slice(256,320)}</p>
-                                <p>{el.msg.slice(320,384)}</p>
-                                <p>{el.msg.slice(384,448)}</p>
-                                <p>{el.msg.slice(448,512)}</p>
-                                <p>{el.msg.slice(512,576)}</p>
-                                <p>{el.msg.slice(576,640)}</p>
+                                <p>{el.msg.slice(0,64)} </p>
+                                <p>{el.msg.slice(64,128)} </p>
+                                <p>{el.msg.slice(128,192)} </p>
+                                <p>{el.msg.slice(192,256)} </p>
+                                <p>{el.msg.slice(256,320)} </p>
+                                <p>{el.msg.slice(320,384)} </p>
+                                <p>{el.msg.slice(384,448)} </p>
+                                <p>{el.msg.slice(448,512)} </p>
+                                <p>{el.msg.slice(512,576)} </p>
+                                <p>{el.msg.slice(576,640)} </p>
                             </div>
                         </div>
                     ))}

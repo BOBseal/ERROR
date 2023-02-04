@@ -59,9 +59,9 @@
     cursor:grabbing;
 }
 .msg{
-
+   
 }
-@media only screen and (max-width: 55em){
+@media only screen and (max-width: 45em){
     .ChatBoxSndImg{
         gap: 0.4rem;
     }
@@ -76,5 +76,11 @@
      .ChatBoxLeft{
          padding-left:1rem ;
          padding-right: 1rem;
+     }
+     .Chat{
+        max-width:100%;
+     }
+     .msg{
+        font-size:1em;
      }
 }

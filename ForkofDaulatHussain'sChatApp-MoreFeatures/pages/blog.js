@@ -1,6 +1,8 @@
 import React, { useState,useContext,useEffect } from 'react'
 import { Loader } from '../Components';
 import { ChatContext } from '../context/ChatContext'
+import {convertTime} from "../Utils/apiFeatures.js"
+import S from '/./Styles/Blo.module.css'
 //import COMINGSOON from './comingsoon'
 //import { connectingWithContract } from '../Utils/apiFeatures'
 
@@ -9,29 +11,31 @@ const blog =() => {
   const [a,aa] =useState("");
   const [Title,setTitle] =useState('');
   const [Post,setPost] =useState('');
+  const [open,SetOpen] = useState(false);
 
  
   return (
-   <>
+   <div className={S.main}>
     {/*<div>
       <h4>Author Name</h4>
     <input type="text" onChange={(e)=> aa(e)}/>
     </div>*/}
-
+{open ==true? <div className={S.PostMe}>
     <div>
       <h4>Post Heading</h4>
     <input type="text" onChange={(a)=> setTitle(a.target.value)} maxLength={64}placeholder="Max-64 Characters"/>
     </div>
 
     <div>
-      <p>Type your Post</p>
+      <h4>Type your Post</h4>
     <input type="text" onChange={(b)=> setPost(b.target.value)} maxLength={2560} placeholder="Max-2560 Characters"/>
-    </div>
-
-    {loading? <Loader/>:<button onClick={()=> PostToBlackBoard(userName,Title,Post)} >Post</button>}
-    <div>
+    </div> 
+    {loading? <Loader/>: <div>{ Title && Post ? <button onClick={()=> PostToBlackBoard(userName,Title,Post)} >Post</button> :"Write First"}</div>}
+    <button onClick={()=>SetOpen(false)}> Cancel</button>
+</div> : <button onClick={()=>SetOpen(true)} className={S.supa}>Write to BlackBoard </button>}
+    <div className={S.fd}>
     {blogs.map((blog,index)=>(
-      <div key={index+1}>
+      <div key={index+1} className={S.BlogBox}>
         <h1>{blog.title}</h1>
         <p>Author Name: {blog.author}</p>
         <small>Author Address: {blog.authorAddress}</small>
@@ -76,10 +80,12 @@ const blog =() => {
                                 <p>{blog.post.slice(2368,2432)}</p>
                                 <p>{blog.post.slice(2432,2496)}</p>
                                 <p>{blog.post.slice(2496,2560)}</p>
+                                <small>{convertTime(blog.time)}</small>
       </div>
+      
     ))}
     </div>
-    </>
+    </div>
   )
 }
 

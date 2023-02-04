@@ -30,7 +30,7 @@ const NavBar = () => {
       link: "/Transfer"
     },
     {
-      menu : "INCOGNITO-TRANSFER",
+      menu : "DECENTRA-Cloud",
       link: "/comingsoon"
     },
     {

@@ -1,0 +1,41 @@
+.BlogBox p{
+    font-size: 1.6rem;
+}
+.BlogBox small{
+    font-size: 1rem;
+    color:green;
+}
+.fd{
+    padding:14rem;
+}
+.BlogBox{
+  text-align:center;
+  background-color:#c2d1f0;
+  border-radius:1rem;
+  cursor: pointer;
+}
+.supa{
+    display: flex;
+}
+.PostMe{
+    text-align:center;
+}
+.main{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+@media only screen and (max-width: 55em){
+    .BlogBox p{
+        font-size: 0.85rem;
+        color: rgba(0,0,0,0.75)
+    }
+    .BlogBox small{
+        font-size: 0.65rem;
+        color:green;
+    }
+    .fd{
+        padding:0.5rem;
+    }
+}
