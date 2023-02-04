@@ -1,7 +1,6 @@
 import '../styles/globals.css'
 import { ChatAppProvider } from '../context/ChatContext';
 import {NavBar} from '../Components/index'
-import {DriveProvider} from '../context/DriveContext';
 
 //import { useNetwork } from '@thirdweb-dev/react';
 
