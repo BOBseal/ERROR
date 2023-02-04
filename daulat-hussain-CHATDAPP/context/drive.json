@@ -1,0 +1,90 @@
+[
+    {
+      "type": "function",
+      "name": "add",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "_user",
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "url",
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "allow",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "user",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "disallow",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "user",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "display",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "_user",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "string[]",
+          "name": "",
+          "internalType": "string[]"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "shareAccess",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "tuple[]",
+          "name": "",
+          "components": [
+            {
+              "type": "address",
+              "name": "user",
+              "internalType": "address"
+            },
+            {
+              "type": "bool",
+              "name": "access",
+              "internalType": "bool"
+            }
+          ],
+          "internalType": "struct Upload.Access[]"
+        }
+      ],
+      "stateMutability": "view"
+    }
+  ]

@@ -2,12 +2,12 @@ import React, { useState,useContext,useEffect } from 'react'
 import { Loader } from '../Components';
 import { ChatContext } from '../context/ChatContext'
 import {convertTime} from "../Utils/apiFeatures.js"
-import S from '../styles/blo.module.css'
+import S from '../styles/Blo.module.css'
 //import COMINGSOON from './comingsoon'
 //import { connectingWithContract } from '../Utils/apiFeatures'
 
 const blog =() => {
-  const {PostToBlackBoard,blogs,userName,loading} = useContext(ChatContext);
+  const {PostToBlackBoard,blogs,userName,loading,sendLike} = useContext(ChatContext);
   const [a,aa] =useState("");
   const [Title,setTitle] =useState('');
   const [Post,setPost] =useState('');
@@ -81,6 +81,7 @@ const blog =() => {
                                 <p>{blog.post.slice(2432,2496)}</p>
                                 <p>{blog.post.slice(2496,2560)}</p>
                                 <small>{convertTime(blog.time)}</small>
+                                <button onClick={()=>sendLike()}> Like</button>
       </div>
       
     ))}

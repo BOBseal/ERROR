@@ -2,7 +2,7 @@ import React, {useState , useEffect  } from 'react';
 import { useRouter } from 'next/router';
 import { CheckIfWalletConnected } from '../Utils/apiFeatures';
 import { connectWallet } from '../Utils/apiFeatures';
-import { connectingWithContract } from '../Utils/apiFeatures';
+import { connectingWithContract,connectToDrive} from '../Utils/apiFeatures';
 import { ethers } from 'ethers';
 import { ThirdwebProvider, ChainId } from '@thirdweb-dev/react';
 //import { convertTime } from '../Utils/apiFeatures';
@@ -164,7 +164,7 @@ export const ChatAppProvider = ({children}) =>{
             window.location.reload();
         }  
         } catch (error) {
-            console.log(error);
+            setError("Tranasction Failed, Please Retry");
         }
     }
 
@@ -200,15 +200,28 @@ export const ChatAppProvider = ({children}) =>{
             window.location.reload();
             return post;
         } catch (error) {
-            setError("Writing to the Blackboard failed")
+            setError("Writing to the Blackboard failed");
         }        
+    }
+    const sendLike = async(index)=>{
+        //const index = 0;
+        try {
+            const co = await connectingWithContract();
+           const a = await co.sendLike(index, {value: ethers.utils.parseEther('0.5')});
+           setLoading(true);
+           await a.wait();
+           setLoading(false);
+           window.location.reload();
+        } catch (error) {
+            setError("Like Function Reverted");
+        }
     }
 
     return(<ThirdwebProvider desiredChainId={ChainId.Mumbai}
         >
         <ChatContext.Provider value={{readMessage ,sendMatic, createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,setUserName,
             account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet,Balance,transactionCount,getAllTransactions,
-            allTransactions,usernetId,PostToBlackBoard,blogs
+            allTransactions,usernetId,PostToBlackBoard,blogs,sendLike
         }}>
             {children}
         </ChatContext.Provider >

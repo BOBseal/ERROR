@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
-import {ChatAppAddress , ChatAppAbi} from '../context/constants';
+import {ChatAppAddress , ChatAppAbi ,DriveAbi ,DriveAddress} from '../context/constants';
 
 const ChainID = 137;
 
@@ -54,6 +54,22 @@ export const connectingWithContract = async()=>{
     }
 }  
 
+
+const fetchDrive = (signerOrProvider)=>new ethers.Contract(DriveAddress,DriveAbi,signerOrProvider);
+
+
+export const connectToDrive= async()=>{
+    try {
+        const Modal = new web3modal();
+        const cssd = await web3modal.connect();
+        const prod =  new ethers.providers.Web3Provider(cssd);
+        const sig = prod.getSigner();
+        const ct = fetchDrive(signer);
+        return ct;
+    } catch (error) {
+       console.log(error); 
+    }
+}
 export const convertTime = (time) => {
     const newTime = new Date(time *1000);
 

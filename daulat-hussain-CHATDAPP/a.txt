@@ -1,0 +1,96 @@
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.9;
+
+contract Blog {
+    address public owner;
+    uint public postCounter;
+
+    mapping(uint => address) public authorOf;
+    mapping(address => uint) public postsOf;
+    mapping(uint => bool) public postsExist;
+
+    enum Deactivated {
+        NO,
+        YES
+    }
+
+    struct PostStruct {
+        uint id;
+        string title;
+        string description;
+        address author;
+        Deactivated deleted;
+        uint256 likes;
+        mapping(address => bool) likedBy;
+        mapping(address => string[]) comments;
+        uint created;
+        uint updated;
+    }
+
+    PostStruct[] activePosts;
+    PostStruct[] inactivePosts;
+
+    event Action(
+        uint id,
+        string actionType,
+        address indexed executor,
+        uint timestamp
+    );
+    event Comment(
+    uint id,
+    string comment,
+    address indexed executor,
+    uint timestamp
+    );
+
+    event Like(
+        uint id,
+        uint likes,
+        address indexed executor,
+        uint timestamp
+    );
+
+    modifier ownerOnly() {
+        require(msg.sender == owner, "Reserved for owners only");
+        _;
+    }
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function createPost(
+        string memory title,
+        string memory description
+    ) public returns (bool) {
+        require(bytes(title).length > 0, "Title cannot be empty");
+        require(bytes(description).length > 0, "Description cannot be empty");
+
+        postCounter++;
+        authorOf[postCounter] = msg.sender;
+        postsOf[msg.sender]++;
+        postsExist[postCounter] = true;
+
+        activePosts.push(
+            PostStruct(
+                postCounter,
+                title,
+                description,
+                msg.sender,
+                Deactivated.NO,
+                0,
+                block.timestamp,
+                block.timestamp
+            )
+        );
+
+        emit Action(postCounter, "POST CREATED", msg.sender, block.timestamp);
+
+        return true;
+    }
+
+}
+
+update and add the following functions to this solidity smart contract- 
+1. add a Like function and like count and also a helper function to get all likes for a given blog, 
+2. add a comment function for the blogs and also a helper function to read all comments

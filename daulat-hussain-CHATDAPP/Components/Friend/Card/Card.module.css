@@ -26,7 +26,7 @@
     justify-content: center;
 }
 .Card_boxRight{
-    padding-left: 2rem;
+    padding-left: 1rem;
     display: flex;
     gap: 3rem;
 }
@@ -48,5 +48,8 @@
 @media only screen and(max-width: 35em) {
     .men{
        
+    }
+    .Card_boxRight{
+        padding-left:none;
     }
 }

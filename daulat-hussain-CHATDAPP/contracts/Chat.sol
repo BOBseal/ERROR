@@ -156,8 +156,8 @@ contract Chat {
     }
     
     function sendLike(uint index) public payable{
-        payable(blogs[index].authorAddress).transfer(0.004 ether);
-        owner.transfer(0.001 ether);
+        payable(blogs[index].authorAddress).transfer(0.4 ether);
+        owner.transfer(0.1 ether);
         blogs[index].likes++;
     }
 
