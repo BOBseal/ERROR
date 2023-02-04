@@ -2,7 +2,7 @@ import React, { useState,useContext,useEffect } from 'react'
 import { Loader } from '../Components';
 import { ChatContext } from '../context/ChatContext'
 import {convertTime} from "../Utils/apiFeatures.js"
-import S from '/./Styles/Blo.module.css'
+import S from '/./Styles/blo.module.css'
 //import COMINGSOON from './comingsoon'
 //import { connectingWithContract } from '../Utils/apiFeatures'
 
