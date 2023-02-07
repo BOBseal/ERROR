@@ -7,4 +7,4 @@ export const ChatAppAddress = "0x6fe1D599CC4269e6b6dF04Cf78533e1A81900f94";//mum
 export const ChatAppAbi = ChatJSON.abi;
 
 export const DriveAddress = "0x31Ed541ec1f79f161010fB25a4DbC9B5e6734263";
-export const DriveAbi = DriveJson;
+export const DriveAbi = DriveJson.abi;

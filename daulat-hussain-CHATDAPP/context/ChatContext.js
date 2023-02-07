@@ -16,7 +16,7 @@ export const ChatAppProvider = ({children}) =>{
     const [friendLists , setFriendLists] = useState([]);
     const [friendMsg , setFriendMsg] = useState([]);
     const [loading , setLoading] =useState(false);
-    const[userLists , setUserLists] = useState([]);
+    const [userLists , setUserLists] = useState([]);
     const [error, setError] = useState("");
     const [blogs,xx] = useState([]);
     const [currentUserName, setCurrentUserName] = useState("");
@@ -57,25 +57,13 @@ export const ChatAppProvider = ({children}) =>{
         
     };
 
-
     useEffect(() => {
-      fetchData();
+
+     fetchData();
+     
+      
     }, [])
 
-
-
-    {/*const rdp = async()=>{
-        try {
-            const c = await connectingWithContract();
-            const r = await c.readBlogs();
-            setLoading(true);
-            await r.wait();
-            setLoading(false);
-            xx(r);
-        } catch (error) {
-            console.log("reload")
-        }
-    }*/}
     const readMessage = async(friendAddress) => {
         try {
             const contract = await connectingWithContract();
@@ -207,7 +195,7 @@ export const ChatAppProvider = ({children}) =>{
         //const index = 0;
         try {
             const co = await connectingWithContract();
-           const a = await co.sendLike(index, {value: ethers.utils.parseEther('0.5')});
+           const a = await co.sendLike(index);
            setLoading(true);
            await a.wait();
            setLoading(false);
@@ -221,7 +209,7 @@ export const ChatAppProvider = ({children}) =>{
         >
         <ChatContext.Provider value={{readMessage ,sendMatic, createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,setUserName,
             account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet,Balance,transactionCount,getAllTransactions,
-            allTransactions,usernetId,PostToBlackBoard,blogs,sendLike
+            allTransactions,usernetId,PostToBlackBoard,blogs,sendLike,connectToDrive
         }}>
             {children}
         </ChatContext.Provider >

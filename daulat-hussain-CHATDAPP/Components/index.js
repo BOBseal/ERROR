@@ -5,5 +5,6 @@ import Loader from "./Loader/Loader";
 import Friend from "./Friend/Friend";
 import Filter from "./Filter/Filter";
 import Error from "./Error/Error";
+import Upload from "./IPFS/upload"
 
-export {NavBar , USERCARD , Model , Loader , Friend , Filter, Error};
+export {NavBar , USERCARD , Model , Loader , Friend , Filter, Error, Upload};

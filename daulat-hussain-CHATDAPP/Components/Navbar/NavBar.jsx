@@ -23,7 +23,7 @@ const NavBar = () => {
     },
     {
       menu : "ToDo",
-      link: "/todo"
+      link: "/comingsoon"
     },
     {
       menu : "WORMHOLE",
@@ -31,7 +31,7 @@ const NavBar = () => {
     },
     {
       menu : "DECENTRA-Cloud",
-      link: "/comingsoon"
+      link: "/cloud"
     },
     {
       menu : "ABOUT",
