@@ -31,7 +31,7 @@ const NavBar = () => {
     },
     {
       menu : "DECENTRA-Cloud",
-      link: "/cloud"
+      link: "/cloudx2"
     },
     {
       menu : "ABOUT",

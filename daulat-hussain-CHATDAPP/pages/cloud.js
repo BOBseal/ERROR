@@ -47,7 +47,10 @@ import { ChatContext } from '../context/ChatContext'
  
   const sharing = async () => {
     const address = document.querySelector(".address").value;
-    await contract.allow(address);
+    const contracts = await connectToDrive();
+      const subm =  await contracts.allow(address);
+      await subm.wait();
+      alert("Saved to Blockahin")
     setModalOpen(false);
   };
  
@@ -117,10 +120,10 @@ import { ChatContext } from '../context/ChatContext'
       } catch (e) {
         alert("Unable to upload image to Pinata");
       }
-    }
-    alert("Successfully Image Uploaded");
     setFileName("No image selected");
-    setFile(null);
+    setFile(null); } else {
+      alert("failed");
+    }
   };
   const retrieveFile = (e) => {
     const data = e.target.files[0]; //files array of files object

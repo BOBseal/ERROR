@@ -13,6 +13,8 @@ export const ChatAppProvider = ({children}) =>{
    // const title = "Decentrachat";                   //Title??
     const [account , setAccount] = useState("");
     const [userName , setUserName] = useState("");
+    const [driveContract, setContract] = useState(null);
+    const [provider, setProvider] = useState(null);
     const [friendLists , setFriendLists] = useState([]);
     const [friendMsg , setFriendMsg] = useState([]);
     const [loading , setLoading] =useState(false);
@@ -26,7 +28,9 @@ export const ChatAppProvider = ({children}) =>{
     const [getAllTransactions, setTransactions] = useState([]);
     const [Balance, setBalance] = useState('');
     const [usernetId,ns] = useState("");
-    //const ChainID = 137;
+    const [dataOfUser, setDATA] = useState([]);
+    const [dataOfUser2, setDATA2] = useState([]);
+     //const  ChainID = 137;
 
     const fetchData =async() =>{
         try {
@@ -51,6 +55,9 @@ export const ChatAppProvider = ({children}) =>{
             ns(network)
             const r = await contract.readBlogs();
             xx(r);
+            const driveCont = await connectToDrive();
+            setContract(driveCont);
+            setProvider(provider);
         } catch (error) {
             setError("You Need to Create Account First");
         }
@@ -205,11 +212,78 @@ export const ChatAppProvider = ({children}) =>{
         }
     }
 
+    const uploadFile = async(fileHashUri) =>{
+        try {
+        const contrractt = await connectToDrive();
+        const uplo = await contrractt.add(account,fileHashUri);
+        setLoading(true);
+        await uplo.wait();
+        setLoading(false);
+        window.location.reload();
+       }catch(error){
+        setError("Something went wrong when Publisihing IPFS data to the Blockchain")
+       }
+    }
+
+    const allow = async(addre) =>{
+        try {
+        const contrractt = await connectToDrive();
+        const uplo = await contrractt.allow(addre);
+        setLoading(true);
+        await uplo.wait();
+        setLoading(false);
+        window.location.reload();
+       }catch(error){
+        setError("Something went wrong when Publisihing IPFS data to the Blockchain")
+       }
+    }
+
+    const disallow = async(adder) =>{
+        try {
+        const contrractt = await connectToDrive();
+        const uplo = await contrractt.disallow(adder);
+        setLoading(true);
+        await uplo.wait();
+        setLoading(false);
+        window.location.reload();
+       }catch(error){
+        setError("Something went wrong when Publisihing IPFS data to the Blockchain")
+       }
+    }
+
+    const display = async(adder) =>{
+        try {
+        const contrractt = await connectToDrive();
+        const uplos = await contrractt.display(adder);
+        setLoading(true);
+        await uplos.wait();
+        setDATA(uplos);
+        setLoading(false);
+        window.location.reload();
+       }catch(error){
+        setError("Something went wrong when Publisihing IPFS data to the Blockchain")
+       }
+    }
+
+    const shareAccessList = async() =>{
+        try {
+        const contrractt = await connectToDrive();
+        const uplo = await contrractt.shareAccess();
+        setLoading(true);
+        await uplo.wait();
+        setDATA2(uplo);
+        setLoading(false);
+        window.location.reload();
+       }catch(error){
+        setError("Something went wrong when Publisihing IPFS data to the Blockchain")
+       }
+    }
+
     return(<ThirdwebProvider desiredChainId={ChainId.Mumbai}
         >
         <ChatContext.Provider value={{readMessage ,sendMatic, createAccount , addFriend , sendMessage , readUser,CheckIfWalletConnected,setUserName,
             account,userName,friendLists,friendMsg,userLists,loading,error,currentUserName ,currentUserAddress, connectWallet,Balance,transactionCount,getAllTransactions,
-            allTransactions,usernetId,PostToBlackBoard,blogs,sendLike,connectToDrive
+            allTransactions,usernetId,PostToBlackBoard,blogs,sendLike,connectToDrive,uploadFile,allow,disallow,dataOfUser,dataOfUser2,display,shareAccessList,provider,driveContract
         }}>
             {children}
         </ChatContext.Provider >

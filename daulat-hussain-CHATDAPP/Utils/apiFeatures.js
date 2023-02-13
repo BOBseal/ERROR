@@ -60,11 +60,11 @@ const fetchDrive = (signerOrProvider)=>new ethers.Contract(DriveAddress,DriveAbi
 
 export const connectToDrive= async()=>{
     try {
-        const Modal = new web3modal();
-        const cssd = await web3modal.connect();
+        const Modal = new Web3Modal();
+        const cssd = await Modal.connect();
         const prod =  new ethers.providers.Web3Provider(cssd);
         const sig = prod.getSigner();
-        const ct = fetchDrive(signer);
+        const ct = fetchDrive(sig);
         return ct;
     } catch (error) {
        console.log(error); 
