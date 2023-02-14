@@ -55,8 +55,8 @@ export const ChatAppProvider = ({children}) =>{
             ns(network)
             const r = await contract.readBlogs();
             xx(r);
-            const driveCont = await connectToDrive();
-            setContract(driveCont);
+           // const driveCont = await connectToDrive();
+           //setContract(driveCont);
             setProvider(provider);
         } catch (error) {
             setError("You Need to Create Account First");

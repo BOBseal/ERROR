@@ -37,11 +37,10 @@ export const connectWallet = async()=> {
    
 }
 
-const fetchContract = (signerOrProvider)=>
-  new ethers.Contract(ChatAppAddress , ChatAppAbi , signerOrProvider);
-
 
 export const connectingWithContract = async()=>{
+    const fetchContract = (signerOrProvider)=>
+  new ethers.Contract(ChatAppAddress , ChatAppAbi , signerOrProvider);
     try {
         const web3modal = new Web3Modal();
         const connection = await web3modal.connect();
@@ -55,10 +54,9 @@ export const connectingWithContract = async()=>{
 }  
 
 
-const fetchDrive = (signerOrProvider)=>new ethers.Contract(DriveAddress,DriveAbi,signerOrProvider);
-
 
 export const connectToDrive= async()=>{
+    const fetchDrive = (signerOrProvider)=>new ethers.Contract(DriveAddress,DriveAbi,signerOrProvider);
     try {
         const Modal = new Web3Modal();
         const cssd = await Modal.connect();
